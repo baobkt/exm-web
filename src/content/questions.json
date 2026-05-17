@@ -1,0 +1,433 @@
+{
+  "topics": [
+    {
+      "slug": "cellular-respiration",
+      "title": "Cellular Respiration",
+      "unit": "Unit 3 · Cellular Energetics",
+      "blurb": "Glycolysis, the Krebs cycle, the electron transport chain, and how cells actually pay the ATP bill.",
+      "questions": [
+        {
+          "id": "cr-1",
+          "prompt": "In a eukaryotic cell, where does glycolysis take place?",
+          "choices": [
+            { "id": "a", "text": "Mitochondrial matrix" },
+            { "id": "b", "text": "Inner mitochondrial membrane" },
+            { "id": "c", "text": "Cytoplasm (cytosol)" },
+            { "id": "d", "text": "Endoplasmic reticulum lumen" }
+          ],
+          "correctChoiceId": "c",
+          "explanation": "Glycolysis is a cytosolic pathway — every enzyme that breaks glucose down to pyruvate is dissolved in the cytoplasm, not membrane-bound. That is also why prokaryotes (no mitochondria) can run glycolysis without any of the downstream machinery. The Krebs cycle (matrix) and the electron transport chain (inner mitochondrial membrane) come after pyruvate enters the mitochondrion."
+        },
+        {
+          "id": "cr-2",
+          "prompt": "What is the NET ATP yield from glycolysis per glucose molecule?",
+          "choices": [
+            { "id": "a", "text": "0 ATP" },
+            { "id": "b", "text": "2 ATP" },
+            { "id": "c", "text": "4 ATP" },
+            { "id": "d", "text": "36 ATP" }
+          ],
+          "correctChoiceId": "b",
+          "explanation": "Glycolysis produces 4 ATP by substrate-level phosphorylation but spends 2 ATP up front to activate glucose (hexokinase and PFK steps). 4 − 2 = 2 net ATP. It also generates 2 NADH, but those only become ATP later in the electron transport chain. Watch for the gross-vs-net distinction — exam questions love it."
+        },
+        {
+          "id": "cr-3",
+          "prompt": "Which molecule directly enters the Krebs (citric acid) cycle?",
+          "choices": [
+            { "id": "a", "text": "Glucose" },
+            { "id": "b", "text": "Pyruvate" },
+            { "id": "c", "text": "Acetyl-CoA" },
+            { "id": "d", "text": "Lactate" }
+          ],
+          "correctChoiceId": "c",
+          "explanation": "Pyruvate from glycolysis is first decarboxylated by the pyruvate dehydrogenase complex into Acetyl-CoA, releasing CO₂ and reducing NAD⁺ to NADH. Acetyl-CoA is the 2-carbon unit that condenses with oxaloacetate (4C) to form citrate (6C) and start the Krebs cycle. Pyruvate itself does not enter the cycle."
+        },
+        {
+          "id": "cr-4",
+          "prompt": "Where is the electron transport chain (ETC) located in eukaryotic cells?",
+          "choices": [
+            { "id": "a", "text": "Outer mitochondrial membrane" },
+            { "id": "b", "text": "Inner mitochondrial membrane" },
+            { "id": "c", "text": "Mitochondrial matrix" },
+            { "id": "d", "text": "Cytoplasm" }
+          ],
+          "correctChoiceId": "b",
+          "explanation": "The four ETC complexes (I–IV) plus ATP synthase are embedded in the inner mitochondrial membrane. The folds (cristae) maximize the surface area available for these complexes. Protons get pumped from the matrix into the intermembrane space, building the gradient that drives chemiosmosis. In prokaryotes the analogous chain sits in the plasma membrane."
+        },
+        {
+          "id": "cr-5",
+          "prompt": "In aerobic respiration, what serves as the final electron acceptor of the electron transport chain?",
+          "choices": [
+            { "id": "a", "text": "NAD⁺" },
+            { "id": "b", "text": "Pyruvate" },
+            { "id": "c", "text": "Carbon dioxide" },
+            { "id": "d", "text": "Oxygen (O₂)" }
+          ],
+          "correctChoiceId": "d",
+          "explanation": "O₂ accepts the electrons at Complex IV (cytochrome c oxidase) and combines with H⁺ to form water. That is literally why we breathe oxygen. If O₂ is unavailable, the ETC backs up, NADH cannot be reoxidized, and the cell falls back on fermentation to keep glycolysis running."
+        },
+        {
+          "id": "cr-6",
+          "prompt": "Approximately how many ATP can a single glucose yield through complete aerobic respiration in a eukaryotic cell?",
+          "choices": [
+            { "id": "a", "text": "2 ATP" },
+            { "id": "b", "text": "8 ATP" },
+            { "id": "c", "text": "About 30–32 ATP" },
+            { "id": "d", "text": "About 100 ATP" }
+          ],
+          "correctChoiceId": "c",
+          "explanation": "Best modern estimates put the eukaryotic yield at ~30–32 ATP per glucose: 2 from glycolysis, 2 from the Krebs cycle (as GTP/ATP), and ~26–28 from oxidative phosphorylation. Older textbooks say 36–38, but they assume a perfectly efficient proton-to-ATP ratio and ignore the cost of shuttling cytosolic NADH into the mitochondrion."
+        },
+        {
+          "id": "cr-7",
+          "prompt": "Why does fermentation produce far less ATP than aerobic respiration?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "It produces no ATP at all — only NADH"
+            },
+            {
+              "id": "b",
+              "text": "It bypasses the electron transport chain, so no chemiosmotic ATP is made"
+            },
+            {
+              "id": "c",
+              "text": "It still uses the Krebs cycle but skips glycolysis"
+            },
+            { "id": "d", "text": "It releases the energy as heat instead of ATP" }
+          ],
+          "correctChoiceId": "b",
+          "explanation": "Fermentation is just glycolysis plus a regeneration step (lactate or ethanol) so NAD⁺ can be reused. No Krebs cycle, no ETC, no chemiosmosis — so the only ATP made is the 2 net from glycolysis. The fermentation step itself produces zero ATP; its job is solely to recycle NADH back to NAD⁺ so glycolysis can keep firing."
+        },
+        {
+          "id": "cr-8",
+          "prompt": "What is the primary role of NADH in cellular respiration?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "It is a final waste product that is excreted"
+            },
+            {
+              "id": "b",
+              "text": "It is an electron carrier that delivers electrons to the ETC"
+            },
+            { "id": "c", "text": "It is the enzyme that performs phosphorylation" },
+            {
+              "id": "d",
+              "text": "It is a structural component of the inner mitochondrial membrane"
+            }
+          ],
+          "correctChoiceId": "b",
+          "explanation": "NADH is a reduced electron carrier. It picks up high-energy electrons during glycolysis, pyruvate oxidation, and the Krebs cycle, and drops them off at Complex I of the ETC. That oxidizes it back to NAD⁺, which goes back upstream to grab more electrons. Without NAD⁺ recycling, glycolysis halts — which is exactly the problem fermentation solves."
+        },
+        {
+          "id": "cr-9",
+          "prompt": "Which stage of respiration produces ATP by SUBSTRATE-level phosphorylation (rather than chemiosmosis)?",
+          "choices": [
+            { "id": "a", "text": "Only the electron transport chain" },
+            { "id": "b", "text": "Glycolysis and the Krebs cycle" },
+            { "id": "c", "text": "Only oxidative phosphorylation" },
+            { "id": "d", "text": "Fermentation only" }
+          ],
+          "correctChoiceId": "b",
+          "explanation": "Substrate-level phosphorylation is the direct transfer of a phosphate group from a high-energy intermediate to ADP. It happens in two places: glycolysis (phosphoglycerate kinase and pyruvate kinase steps) and the Krebs cycle (succinyl-CoA → succinate step). Everything else in oxidative phosphorylation is chemiosmotic — driven by the proton gradient, not direct transfer."
+        },
+        {
+          "id": "cr-10",
+          "prompt": "Chemiosmosis (oxidative phosphorylation) generates ATP by exploiting what kind of gradient?",
+          "choices": [
+            { "id": "a", "text": "A sodium ion gradient across the plasma membrane" },
+            {
+              "id": "b",
+              "text": "A proton (H⁺) gradient across the inner mitochondrial membrane"
+            },
+            { "id": "c", "text": "An oxygen concentration gradient inside the matrix" },
+            { "id": "d", "text": "A glucose gradient between the cytosol and matrix" }
+          ],
+          "correctChoiceId": "b",
+          "explanation": "As electrons travel down the ETC, complexes I, III, and IV pump H⁺ from the matrix into the intermembrane space. This builds an electrochemical proton gradient. Protons then flow back down their gradient through ATP synthase, and that flow physically rotates a part of the enzyme that catalyzes ADP + Pi → ATP. This coupling of an electron transport gradient to ATP synthesis is Peter Mitchell's chemiosmotic hypothesis."
+        }
+      ]
+    },
+    {
+      "slug": "dna-and-gene-expression",
+      "title": "DNA Replication & Gene Expression",
+      "unit": "Unit 6 · Gene Expression and Regulation",
+      "blurb": "Replication, transcription, translation, and the molecular machinery that turns DNA into protein.",
+      "questions": [
+        {
+          "id": "ge-1",
+          "prompt": "In what direction do DNA polymerases synthesize new DNA?",
+          "choices": [
+            { "id": "a", "text": "3′ to 5′" },
+            { "id": "b", "text": "5′ to 3′" },
+            { "id": "c", "text": "Either direction, depending on the strand" },
+            { "id": "d", "text": "Only at the origin, then it stops" }
+          ],
+          "correctChoiceId": "b",
+          "explanation": "DNA polymerases can only add nucleotides to a free 3′-OH group, so new DNA is always built 5′ → 3′. The template strand is read 3′ → 5′. This directional constraint is the entire reason the lagging strand has to be made in Okazaki fragments — the replication fork moves one way, but synthesis can only go the other."
+        },
+        {
+          "id": "ge-2",
+          "prompt": "Which enzyme synthesizes RNA from a DNA template during transcription?",
+          "choices": [
+            { "id": "a", "text": "DNA polymerase" },
+            { "id": "b", "text": "Ligase" },
+            { "id": "c", "text": "RNA polymerase" },
+            { "id": "d", "text": "Reverse transcriptase" }
+          ],
+          "correctChoiceId": "c",
+          "explanation": "RNA polymerase reads a DNA template (3′ → 5′) and assembles an RNA strand (5′ → 3′), using A, U, G, C and substituting uracil for thymine. It does NOT need a primer, unlike DNA polymerase. In eukaryotes there are three RNA polymerases (I, II, III) — Pol II makes mRNA."
+        },
+        {
+          "id": "ge-3",
+          "prompt": "Which codon serves as the start codon and codes for methionine?",
+          "choices": [
+            { "id": "a", "text": "UAA" },
+            { "id": "b", "text": "AUG" },
+            { "id": "c", "text": "UGA" },
+            { "id": "d", "text": "GCC" }
+          ],
+          "correctChoiceId": "b",
+          "explanation": "AUG is the canonical start codon and also codes for the amino acid methionine. UAA, UAG, and UGA are the three stop codons (no amino acid). The first amino acid of nearly every newly translated protein is therefore methionine, though it is often cleaved off post-translation."
+        },
+        {
+          "id": "ge-4",
+          "prompt": "What is the primary function of transfer RNA (tRNA) during translation?",
+          "choices": [
+            { "id": "a", "text": "It catalyzes peptide bond formation" },
+            {
+              "id": "b",
+              "text": "It carries an amino acid and base-pairs its anticodon with the mRNA codon"
+            },
+            { "id": "c", "text": "It transcribes DNA into RNA" },
+            { "id": "d", "text": "It serves as the structural core of the ribosome" }
+          ],
+          "correctChoiceId": "b",
+          "explanation": "Each tRNA is charged with a specific amino acid by an aminoacyl-tRNA synthetase, and its anticodon base-pairs with the matching mRNA codon in the ribosome's A site. That is how the genetic code is physically read. Peptide bond formation is catalyzed by the ribosome itself (peptidyl transferase activity in the large subunit rRNA — a ribozyme)."
+        },
+        {
+          "id": "ge-5",
+          "prompt": "During pre-mRNA splicing in eukaryotes, what is removed?",
+          "choices": [
+            { "id": "a", "text": "Exons" },
+            { "id": "b", "text": "Introns" },
+            { "id": "c", "text": "The 5′ cap" },
+            { "id": "d", "text": "The poly-A tail" }
+          ],
+          "correctChoiceId": "b",
+          "explanation": "Introns are the non-coding intervening sequences. The spliceosome removes them and ligates the remaining exons together to form mature mRNA. The 5′ cap (added co-transcriptionally) and the poly-A tail (added at the 3′ end) are KEPT — they protect the mRNA and help it get exported and translated."
+        },
+        {
+          "id": "ge-6",
+          "prompt": "What sequence does RNA polymerase recognize to know where to start transcription?",
+          "choices": [
+            { "id": "a", "text": "The poly-A tail" },
+            { "id": "b", "text": "The Shine-Dalgarno sequence" },
+            { "id": "c", "text": "The promoter" },
+            { "id": "d", "text": "The terminator" }
+          ],
+          "correctChoiceId": "c",
+          "explanation": "The promoter is a DNA sequence upstream of a gene that RNA polymerase (with help from transcription factors in eukaryotes, or sigma factor in bacteria) binds to in order to initiate transcription. The terminator marks the END of transcription. The Shine-Dalgarno is a translation start signal in bacterial mRNA, not a transcription start."
+        },
+        {
+          "id": "ge-7",
+          "prompt": "On which strand are Okazaki fragments synthesized?",
+          "choices": [
+            { "id": "a", "text": "The leading strand" },
+            { "id": "b", "text": "The lagging strand" },
+            { "id": "c", "text": "Both strands equally" },
+            { "id": "d", "text": "Only on the template strand of the gene" }
+          ],
+          "correctChoiceId": "b",
+          "explanation": "DNA polymerase can only add to a 3′-OH and synthesizes 5′ → 3′. On the leading strand, that direction matches the fork's movement, so synthesis is continuous. On the lagging strand, the polymerase has to keep starting over, working away from the fork in short pieces — these are Okazaki fragments, later joined together by DNA ligase."
+        },
+        {
+          "id": "ge-8",
+          "prompt": "Where on an mRNA molecule is the 5′ cap added?",
+          "choices": [
+            { "id": "a", "text": "At the 3′ end" },
+            { "id": "b", "text": "At the 5′ end" },
+            { "id": "c", "text": "In the middle of every exon" },
+            { "id": "d", "text": "On the poly-A tail" }
+          ],
+          "correctChoiceId": "b",
+          "explanation": "The 5′ cap is a modified guanine (7-methylguanosine) added to the 5′ end of nascent mRNA, very soon after transcription starts. It protects the mRNA from exonucleases, helps with export from the nucleus, and is recognized by the ribosome during translation initiation. The poly-A tail is the analogous protective structure at the 3′ end."
+        },
+        {
+          "id": "ge-9",
+          "prompt": "A mutation that inserts a SINGLE extra nucleotide into the coding region of a gene is best described as:",
+          "choices": [
+            { "id": "a", "text": "A silent mutation" },
+            { "id": "b", "text": "A missense mutation" },
+            { "id": "c", "text": "A frameshift mutation" },
+            { "id": "d", "text": "A chromosomal translocation" }
+          ],
+          "correctChoiceId": "c",
+          "explanation": "Inserting or deleting a single nucleotide shifts the reading frame of every codon downstream of the mutation site, so the protein sequence is garbled from that point on (or hits a premature stop). That is a frameshift mutation. Silent and missense mutations are point substitutions that keep the reading frame intact."
+        },
+        {
+          "id": "ge-10",
+          "prompt": "Operons (such as the lac operon) are a regulatory feature primarily found in:",
+          "choices": [
+            { "id": "a", "text": "Eukaryotic plants only" },
+            { "id": "b", "text": "Prokaryotes (bacteria and archaea)" },
+            { "id": "c", "text": "Animal cells" },
+            { "id": "d", "text": "Mitochondria of fungi" }
+          ],
+          "correctChoiceId": "b",
+          "explanation": "An operon is a cluster of co-regulated genes transcribed as a single mRNA, controlled by a shared promoter and operator. This is a prokaryotic regulation strategy — eukaryotes overwhelmingly regulate genes individually, with their own promoters and (usually) one gene per mRNA. The lac operon in E. coli is the canonical AP Bio example."
+        }
+      ]
+    },
+    {
+      "slug": "natural-selection",
+      "title": "Natural Selection & Evolution",
+      "unit": "Unit 7 · Natural Selection",
+      "blurb": "Hardy-Weinberg, drift, selection, speciation — the engines that shape allele frequencies.",
+      "questions": [
+        {
+          "id": "ns-1",
+          "prompt": "Hardy-Weinberg equilibrium ASSUMES which of the following?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Strong selection pressure on at least one allele"
+            },
+            { "id": "b", "text": "Small population size with frequent migration" },
+            {
+              "id": "c",
+              "text": "No selection, no mutation, no migration, random mating, large population"
+            },
+            { "id": "d", "text": "Equal allele frequencies (p = q = 0.5)" }
+          ],
+          "correctChoiceId": "c",
+          "explanation": "Hardy-Weinberg is a NULL model — it describes what allele frequencies look like when nothing is changing them. Its five assumptions are: no selection, no mutation, no gene flow (migration), random mating, and a large (effectively infinite) population. Any deviation from observed frequencies signals that at least one of those assumptions is violated, which is the point of the test."
+        },
+        {
+          "id": "ns-2",
+          "prompt": "In Hardy-Weinberg notation, what does p² + 2pq + q² equal?",
+          "choices": [
+            { "id": "a", "text": "0" },
+            { "id": "b", "text": "0.5" },
+            { "id": "c", "text": "1" },
+            { "id": "d", "text": "It depends on the population" }
+          ],
+          "correctChoiceId": "c",
+          "explanation": "p² + 2pq + q² = 1. It is the sum of GENOTYPE frequencies (homozygous dominant + heterozygous + homozygous recessive) and like any complete set of frequencies it must sum to 1. Separately, p + q = 1 captures the ALLELE frequencies. These two equations together are the entire Hardy-Weinberg toolkit."
+        },
+        {
+          "id": "ns-3",
+          "prompt": "A 'population bottleneck' typically produces what genetic effect?",
+          "choices": [
+            { "id": "a", "text": "Increased genetic diversity" },
+            { "id": "b", "text": "Reduced genetic diversity" },
+            { "id": "c", "text": "No effect on diversity, only on phenotype" },
+            { "id": "d", "text": "Immediate speciation" }
+          ],
+          "correctChoiceId": "b",
+          "explanation": "A bottleneck is a sharp, non-selective reduction in population size (e.g., natural disaster). The surviving allele pool is just a random subsample of the original. Even if the population recovers in numbers, the lost alleles are gone — so diversity drops. This is a special case of genetic drift, and is why cheetahs and northern elephant seals have famously low diversity."
+        },
+        {
+          "id": "ns-4",
+          "prompt": "Which of the following is a classic example of HETEROZYGOTE advantage?",
+          "choices": [
+            { "id": "a", "text": "Sickle-cell trait conferring malaria resistance" },
+            { "id": "b", "text": "Albinism in cave fish" },
+            { "id": "c", "text": "Industrial melanism in peppered moths" },
+            { "id": "d", "text": "Antibiotic resistance in bacteria" }
+          ],
+          "correctChoiceId": "a",
+          "explanation": "Heterozygote advantage (overdominance) means HbA/HbS individuals out-survive both homozygotes in malarial regions: HbS/HbS suffer sickle-cell disease, HbA/HbA are more vulnerable to malaria, but HbA/HbS get partial malaria resistance with mild symptoms. This is why the HbS allele stays at meaningfully high frequency in those regions instead of being purged by selection."
+        },
+        {
+          "id": "ns-5",
+          "prompt": "Allopatric speciation requires which of the following conditions?",
+          "choices": [
+            { "id": "a", "text": "Polyploidy in plants" },
+            { "id": "b", "text": "Geographic isolation of populations" },
+            { "id": "c", "text": "Sexual selection acting on males" },
+            { "id": "d", "text": "Disruptive selection within a single habitat" }
+          ],
+          "correctChoiceId": "b",
+          "explanation": "Allopatric = 'other country'. The populations are split by a geographic barrier (river, mountain, glaciation, an island arising) that prevents gene flow. Independent mutation, drift, and selection then accumulate until the two groups are reproductively isolated even if reunited. SYMPATRIC speciation is the opposite case — speciation without geographic separation (e.g., polyploidy)."
+        },
+        {
+          "id": "ns-6",
+          "prompt": "Wings in bats and wings in birds are an example of:",
+          "choices": [
+            { "id": "a", "text": "Homologous structures from a winged common ancestor" },
+            { "id": "b", "text": "Vestigial structures" },
+            {
+              "id": "c",
+              "text": "Analogous structures arising from convergent evolution"
+            },
+            { "id": "d", "text": "Co-evolution" }
+          ],
+          "correctChoiceId": "c",
+          "explanation": "Bats and birds independently evolved powered flight from non-flying ancestors — the wings serve the same function but come from different ancestral structures (different bones, different developmental pathway). That is convergent evolution producing analogous structures. Homologous structures (e.g., the same forelimb skeleton across mammals) share an ancestor regardless of current function."
+        },
+        {
+          "id": "ns-7",
+          "prompt": "What is the key distinction between ANALOGOUS and HOMOLOGOUS structures?",
+          "choices": [
+            {
+              "id": "a",
+              "text": "Analogous structures share an ancestor; homologous do not"
+            },
+            {
+              "id": "b",
+              "text": "Homologous structures share a common ancestor; analogous structures share only a similar function"
+            },
+            { "id": "c", "text": "Homologous structures are always vestigial" },
+            { "id": "d", "text": "They are synonyms" }
+          ],
+          "correctChoiceId": "b",
+          "explanation": "Homologous structures are inherited from a common ancestor (your arm, a whale's flipper, a bat's wing — same bones, different uses). Analogous structures look or function alike because they were independently selected to do similar jobs (insect wings vs. bird wings), but they did not come from the same ancestral structure. Homology is evidence of shared ancestry; analogy is evidence of convergent selection pressures."
+        },
+        {
+          "id": "ns-8",
+          "prompt": "Genetic drift has the LARGEST effect on allele frequencies in:",
+          "choices": [
+            { "id": "a", "text": "Very large populations" },
+            { "id": "b", "text": "Populations under strong selection" },
+            { "id": "c", "text": "Small populations" },
+            { "id": "d", "text": "Populations with high gene flow" }
+          ],
+          "correctChoiceId": "c",
+          "explanation": "Drift is random sampling error in which alleles get passed to the next generation. In big populations the law of large numbers smooths the randomness out. In small populations a few chance events (a few individuals not reproducing) can swing allele frequencies dramatically — sometimes fixing or losing alleles outright. That is why bottlenecks and founder effects are so consequential."
+        },
+        {
+          "id": "ns-9",
+          "prompt": "In evolutionary biology, an organism's 'fitness' is best defined as:",
+          "choices": [
+            { "id": "a", "text": "Its physical strength or speed" },
+            { "id": "b", "text": "Its lifespan" },
+            {
+              "id": "c",
+              "text": "Its relative reproductive success — how many viable offspring it leaves"
+            },
+            { "id": "d", "text": "Its ability to avoid predators" }
+          ],
+          "correctChoiceId": "c",
+          "explanation": "Fitness is reproductive success relative to other genotypes in the same population. An organism that lives a long time but leaves no offspring has zero evolutionary fitness. Survival traits matter only INSOFAR as they translate into reproduction. This is why peacock tails — costly for survival — persist: they boost fitness through mating success."
+        },
+        {
+          "id": "ns-10",
+          "prompt": "The theory of punctuated equilibrium proposes that evolutionary change is:",
+          "choices": [
+            { "id": "a", "text": "Continuous and gradual over millions of years" },
+            {
+              "id": "b",
+              "text": "Long periods of stasis punctuated by rapid bursts of speciation"
+            },
+            { "id": "c", "text": "Driven entirely by mutation, not selection" },
+            { "id": "d", "text": "Reversible — species can de-evolve" }
+          ],
+          "correctChoiceId": "b",
+          "explanation": "Punctuated equilibrium (Eldredge and Gould, 1972) was proposed to explain why the fossil record so often shows species appearing, persisting nearly unchanged for long stretches, then disappearing or rapidly diverging. It is contrasted with phyletic gradualism — slow, steady change. Both modes happen; the debate is over which dominates the record."
+        }
+      ]
+    }
+  ]
+}

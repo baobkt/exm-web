@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# exm-web
 
-## Getting Started
+AP Biology AI tutor — early build. Web-first, English-only, targeting the May 2027 AP exam cycle.
+Direction locked in EXM-2; foundations tracked in EXM-3.
 
-First, run the development server:
+## Stack
+
+- [Next.js 16](https://nextjs.org) (App Router) + TypeScript + React 19
+- [Tailwind CSS 4](https://tailwindcss.com) for styling
+- ESLint (Next defaults) + Prettier for formatting
+- GitHub Actions for CI and deploy
+- Static export to GitHub Pages today; production will move to a server-capable host
+  (likely Vercel) when the MVP needs Claude API routes — see EXM-4.
+
+We picked this stack because it is boring, single-language, well-documented, and ships fast.
+The AI tutor work happens server-side later; for now the homepage is static.
+
+## Local development
 
 ```bash
+git clone git@github.com:baobkt/exm-web.git
+cd exm-web
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command                | What it does                              |
+| ---------------------- | ----------------------------------------- |
+| `npm run dev`          | Start dev server                          |
+| `npm run build`        | Production build (static export to `out`) |
+| `npm run lint`         | ESLint                                    |
+| `npm run typecheck`    | `tsc --noEmit`                            |
+| `npm run format`       | Prettier write                            |
+| `npm run format:check` | Prettier check (CI uses this)             |
 
-## Learn More
+## CI
 
-To learn more about Next.js, take a look at the following resources:
+Two GitHub Actions workflows:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **`ci.yml`** — runs on every push and pull request to `main`. Format check → lint → typecheck → build.
+- **`pages.yml`** — runs on every push to `main`. Builds with `GITHUB_PAGES=true` so the
+  static export uses the correct `basePath`, uploads `out/` as a Pages artifact, and deploys.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+After the first successful deploy, the site is reachable at
+`https://baobkt.github.io/exm-web/`.
 
-## Deploy on Vercel
+## Deploying
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Pushes to `main` automatically deploy. No manual step. To deploy on demand, trigger the
+`pages` workflow from the Actions tab (`Run workflow`).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project layout
+
+```
+src/app/         # Next.js App Router pages
+src/app/page.tsx # Homepage
+public/          # Static assets shipped as-is
+.github/         # CI + deploy workflows
+next.config.ts   # Static export config, conditional basePath for GH Pages
+```
+
+## Next milestones
+
+Tracked in Paperclip (EXM project):
+
+- EXM-4 — Ship MVP v0.1 end-to-end student flow (Claude tutor + question bank + scoring).
+- Vercel/Postgres setup decision deferred to EXM-4 so we don't pay for unused infra.

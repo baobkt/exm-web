@@ -1,7 +1,20 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
+
+const isPagesBuild = process.env.GITHUB_PAGES === 'true';
+const repo = process.env.GITHUB_REPOSITORY?.split('/')[1];
+const basePath = isPagesBuild && repo ? `/${repo}` : '';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: 'export',
+  trailingSlash: true,
+  images: {
+    unoptimized: true,
+  },
+  basePath: basePath || undefined,
+  assetPrefix: basePath || undefined,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
 };
 
 export default nextConfig;

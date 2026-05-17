@@ -12,6 +12,7 @@ const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY ?? '';
 const POSTHOG_HOST = process.env.NEXT_PUBLIC_POSTHOG_HOST ?? 'https://us.i.posthog.com';
 
 export type TelemetryEvent =
+  | 'topic_select_viewed'
   | 'session_start'
   | 'question_answered'
   | 'session_complete'

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { getAllTopics } from '@/lib/questions';
+import { TopicSelectTelemetry } from '@/components/TopicSelectTelemetry';
 
 export const metadata: Metadata = {
   title: 'Pick a topic · AP Biology Practice',
@@ -12,6 +13,7 @@ export default function PracticeIndex() {
 
   return (
     <main className="min-h-screen bg-zinc-50 px-5 py-10 text-zinc-900 dark:bg-black dark:text-zinc-100 sm:px-6 sm:py-14">
+      <TopicSelectTelemetry topicCount={topics.length} />
       <div className="mx-auto flex w-full max-w-3xl flex-col gap-8">
         <nav className="text-xs text-zinc-500 dark:text-zinc-500">
           <Link href="/" className="hover:text-zinc-700 dark:hover:text-zinc-300">

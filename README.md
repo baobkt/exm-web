@@ -63,6 +63,22 @@ public/          # Static assets shipped as-is
 next.config.ts   # Static export config, conditional basePath for GH Pages
 ```
 
+## Telemetry
+
+Anonymous, device-scoped session events go to PostHog Cloud (free tier). The client emits
+`session_start`, `question_answered`, `session_complete`, `session_retry`, and
+`session_abandoned`. Implementation: `src/lib/telemetry.ts` + `src/components/Telemetry.tsx`.
+
+To enable in a deployment, set the following in the repo's Actions secrets/vars:
+
+| Name                       | Where             | Value                                            |
+| -------------------------- | ----------------- | ------------------------------------------------ |
+| `NEXT_PUBLIC_POSTHOG_KEY`  | Actions → Secrets | PostHog project API key (starts with `phc_`)     |
+| `NEXT_PUBLIC_POSTHOG_HOST` | Actions → Vars    | Optional. Defaults to `https://us.i.posthog.com` |
+
+If the key is unset the client is a silent no-op (in dev it logs to console for debugging),
+so the build still works locally and in PR previews. See EXM-6 for the runbook.
+
 ## Next milestones
 
 Tracked in Paperclip (EXM project):

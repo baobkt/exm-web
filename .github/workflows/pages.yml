@@ -33,6 +33,8 @@ jobs:
       - name: Build static export
         env:
           GITHUB_PAGES: 'true'
+          NEXT_PUBLIC_POSTHOG_KEY: ${{ secrets.NEXT_PUBLIC_POSTHOG_KEY }}
+          NEXT_PUBLIC_POSTHOG_HOST: ${{ vars.NEXT_PUBLIC_POSTHOG_HOST }}
         run: npm run build
 
       - name: Disable Jekyll on Pages

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { Telemetry } from '@/components/Telemetry';
 import './globals.css';
 
 const geistSans = Geist({
@@ -33,7 +34,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Telemetry />
+        <div className="flex-1">{children}</div>
+        <footer className="border-t border-zinc-200 bg-zinc-50 px-5 py-4 text-xs leading-5 text-zinc-500 dark:border-zinc-800 dark:bg-black dark:text-zinc-500 sm:px-6">
+          <p className="mx-auto max-w-3xl">
+            We log anonymous, device-scoped session events (questions seen, answers, scores) to
+            understand what students find useful. No accounts. No personal data. No IP addresses
+            stored by us.
+          </p>
+        </footer>
+      </body>
     </html>
   );
 }

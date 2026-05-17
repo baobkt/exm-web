@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Topic } from '@/lib/questions';
+import { track } from '@/lib/telemetry';
 
 type SessionState = 'in-progress' | 'finished';
 
@@ -22,8 +23,38 @@ export function PracticeSession({ topic }: { topic: Topic }) {
   const [revealed, setRevealed] = useState(false);
   const [sessionState, setSessionState] = useState<SessionState>('in-progress');
 
+  const questionShownAtRef = useRef<number>(0);
+  const completedRef = useRef(false);
+
   const currentQuestion = questions[currentIndex];
   const correctCount = useMemo(() => answers.filter((a) => a.isCorrect).length, [answers]);
+
+  useEffect(() => {
+    track('session_start', { topic_slug: topic.slug, topic_title: topic.title });
+    questionShownAtRef.current = Date.now();
+    // We only want this to fire once per mount per topic.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [topic.slug]);
+
+  // Reset the timer whenever a new question is shown.
+  useEffect(() => {
+    questionShownAtRef.current = Date.now();
+  }, [currentIndex]);
+
+  // Fire session_abandoned when the user navigates away before completing.
+  useEffect(() => {
+    function handleBeforeUnload() {
+      if (completedRef.current) return;
+      if (answers.length === 0 && currentIndex === 0) return;
+      track('session_abandoned', {
+        topic_slug: topic.slug,
+        q_index_reached: currentIndex,
+        answered: answers.length,
+      });
+    }
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [answers.length, currentIndex, topic.slug]);
 
   if (sessionState === 'finished') {
     return <ResultsScreen topic={topic} answers={answers} onRetry={handleRetry} />;
@@ -37,15 +68,31 @@ export function PracticeSession({ topic }: { topic: Topic }) {
   function handleSubmit() {
     if (!selectedChoiceId || revealed) return;
     const isCorrect = selectedChoiceId === currentQuestion.correctChoiceId;
+    const timeSpentMs = Date.now() - questionShownAtRef.current;
     setAnswers((prev) => [
       ...prev,
       { questionId: currentQuestion.id, selectedChoiceId, isCorrect },
     ]);
     setRevealed(true);
+    track('question_answered', {
+      topic_slug: topic.slug,
+      q_index: currentIndex,
+      q_id: currentQuestion.id,
+      is_correct: isCorrect,
+      time_spent_ms: timeSpentMs,
+    });
   }
 
   function handleNext() {
     if (currentIndex + 1 >= totalQuestions) {
+      const correct = answers.filter((a) => a.isCorrect).length;
+      completedRef.current = true;
+      track('session_complete', {
+        topic_slug: topic.slug,
+        correct,
+        total: totalQuestions,
+        score_pct: Math.round((correct / totalQuestions) * 100),
+      });
       setSessionState('finished');
       return;
     }
@@ -55,11 +102,22 @@ export function PracticeSession({ topic }: { topic: Topic }) {
   }
 
   function handleRetry() {
+    track('session_retry', { topic_slug: topic.slug });
+    completedRef.current = false;
     setCurrentIndex(0);
     setAnswers([]);
     setSelectedChoiceId(null);
     setRevealed(false);
     setSessionState('in-progress');
+  }
+
+  function handleAbandon() {
+    if (completedRef.current) return;
+    track('session_abandoned', {
+      topic_slug: topic.slug,
+      q_index_reached: currentIndex,
+      answered: answers.length,
+    });
   }
 
   return (
@@ -134,6 +192,7 @@ export function PracticeSession({ topic }: { topic: Topic }) {
         <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-between">
           <Link
             href="/practice/"
+            onClick={handleAbandon}
             className="inline-flex items-center justify-center rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-sm font-medium text-zinc-700 transition hover:border-zinc-300 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300 dark:hover:border-zinc-700"
           >
             ← Change topic
